@@ -1,0 +1,143 @@
+* {
+    margin: 5px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: aliceblue;
+
+}
+
+.adivina {
+    max-width: max-content;
+    margin: 0 auto;
+    margin-top: 15%;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: rgb(248, 248, 248);
+    border: 3px solid black;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.titulo {
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
+    margin-bottom: 40px;
+    z-index: 3;
+    background-image: linear-gradient(to right, rgb(255, 170, 170), rgb(88, 88, 255));
+    color: #ffffff;
+    border: 3px solid #fff;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.intentos {
+    max-width: max-content;
+    margin: 0 auto;
+    padding: 10px;
+    background-image: linear-gradient(to right, rgb(255, 170, 170), rgb(88, 88, 255));
+    color: #ffffff;
+    border: 3px solid rgb(255, 255, 255);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.Empezar {
+    padding: 3px;
+    background-image: linear-gradient(to right, rgb(255, 170, 170), rgb(88, 88, 255));
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 6px;
+}
+
+.enviar {
+    padding: 3px;
+    background-image: linear-gradient(to right, rgb(85, 161, 55), rgb(6, 112, 11));
+    color: #fff;
+    border-radius: 6px;
+}
+.reinicio {
+    padding: 3px;
+    background-image: linear-gradient(to right, rgb(133, 67, 67), red);
+    color: #fff;
+    border-radius: 6px;
+}
+
+.insertarNumero {
+    border: 2px solid black;
+    padding: 4px;
+
+}
+
+.VICTORIA {
+   animation: celebrar 1.5s ease-in forwards;
+   opacity: 1;
+}
+@keyframes celebrar {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1) translate(25%);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        
+    }
+}
+.derrota {
+   animation: derrota 1.5s ease-in forwards;
+   opacity: 1;
+}
+@keyframes derrota {
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.1) translate(25%);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        
+    }
+}
+
+.bajo {
+   animation: bajo 1.5s ease-in forwards;
+   opacity: 1;
+}
+@keyframes bajo {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+        color: rgb(0, 130, 134);
+    }
+}
+
+.alto {
+   animation: alto 1.5s ease-in forwards;
+   opacity: 1;
+}
+@keyframes alto {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+        color: rgb(170, 111, 0);
+    }
+}

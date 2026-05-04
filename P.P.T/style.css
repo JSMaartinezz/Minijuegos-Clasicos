@@ -1,0 +1,317 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-elecciones: #E87F24;
+    --color-medio: #FFC81E;
+    --color-texto: rgb(30, 30, 30);
+    --color-fondo-body: #FEFDDF;
+    --color-fondo-tarjeta: #ffffff;
+    --color-botones: #ffc81e;
+    --color-hover-botones: #78ad3c;
+    --color-hover-reiniciar: #d11616;
+}
+
+body {
+    background-color: var(--color-fondo-body);
+    color: var(--color-texto);
+    font-family: "Fredoka", sans-serif;
+    margin: auto;
+}
+
+/* Contenedor padre */
+.padre {
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin: auto;
+    padding-left: 75px;
+    padding-right: 75px;
+}
+
+/* Contenedor jugador*/
+.eleccion {
+    border: 3px solid #E87F24;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 280px;
+    flex-direction:column;
+    gap: 15%;
+    padding: 50px;
+    font-size: 30px;
+    height: 350px;
+    background: linear-gradient(to right, #ffffff, #f7f7f7);
+
+}
+
+.piedra {
+    background-color: #FFC81E;
+    color:var(--color-texto);
+    padding: 10px;
+    height: 40px;
+    width: 50px;
+    justify-content: center;
+    font-size: 15px;
+    border-radius: 7px;
+}
+.piedra:hover {
+    box-shadow: 2px 2px 1px 0.5px #353535;
+    background: var(--color-hover-botones);
+}
+.piedra:active {
+    box-shadow: 2px 0px 1px 0.5px #353535;
+}
+
+.papel {
+    background-color: #FFC81E;
+    color:var(--color-texto);
+    padding: 10px;
+    height: 40px;
+    width: 50px;
+    justify-content: center;
+    font-size: 15px;
+    border-radius: 7px;
+}
+.papel:hover {
+    box-shadow: 2px 2px 1px 0.5px #353535;
+    background: var(--color-hover-botones);
+}
+.papel:active {
+    box-shadow: 2px 0px 1px 0.5px #353535;
+}
+.tijeras {
+    background-color: #FFC81E;
+    color:var(--color-texto);
+    padding: 10px;
+    height: 40px;
+    width: 50px;
+    justify-content: center;
+    font-size: 15px;
+    border-radius: 7px;
+}
+.tijeras:hover {
+    box-shadow: 2px 2px 1px 0.5px #353535;
+    background: var(--color-hover-botones);
+}
+.tijeras:active {
+    box-shadow: 2px 0px 1px 0.5px #353535;
+}
+.potenciador {
+    color:var(--color-texto);
+    padding: 10px;
+    height: 40px;
+    width:100%;
+    align-self: flex-end;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: -25px;
+    border-radius: 7px;
+    background: linear-gradient(to right, #E87F24, #FFC81E);
+
+}
+.potenciador:hover {
+    box-shadow: 2px 2px 1px 0.5px #353535;
+    background: var(--color-hover-botones);
+}
+
+.simbolos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: auto;
+    position: absolute;
+    top: 45%;
+}
+
+.humano {
+    padding: 3px;
+    display: flex;
+    justify-content:center;
+    text-align: center;
+    font-size: 30px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    gap: 9px;
+}
+
+
+/* Corazon del juego */
+.medio {
+    display: flex;
+    flex: 1.25;
+    flex-direction: column;
+    border: 3px solid #FFC81E;
+    border-radius: 5px;
+    text-align: center;
+    padding: 32px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    min-height: 300px;
+    background: linear-gradient(to right, #ffffff, #f7f7f7);
+
+}
+
+
+.vs {
+    padding: 10px;
+    height: 35px;
+    width: 30%;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 550;
+    border-radius: 7px;
+    background: linear-gradient(to right, #E87F24, #FFC81E);
+    margin-top: 15px;
+}
+.vs:hover {
+    box-shadow: 1px 1px 1px 0.5px #353535;
+    background: var(--color-hover-botones);
+}
+.vs:active {
+    box-shadow: 2px 0px 1px 0.5px #353535;
+}
+.reiniciarPartida {
+    padding: 10px;
+    height: 40px;
+    width: 50%;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: 550;
+    border-radius: 7px;
+    background: linear-gradient(to right, #E87F24, #FFC81E);
+}
+.reiniciarPartida:hover {
+    box-shadow: 2px 2px 1px 0.5px #353535;
+    background: var(--color-hover-reiniciar);
+}
+.reiniciarPartida:active {
+    box-shadow: 2px 0px 1px 0.5px #353535;
+}
+
+.resultado {
+    font-size: 25px;
+}
+
+.marcador {
+    margin-top: -50px;
+    border: 3px solid var(--color-medio);
+    border-radius: 7px;
+    padding: 25px;
+    box-shadow: 0 0 0 3px #444444;
+    background-color: #FEFDDF;
+    position: relative;
+    z-index: 10;
+    
+    
+}
+
+/* Contenedor*/
+.maquina {
+    display: flex;
+    flex: 0 0 280px;
+    height: 350px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    border: 3px solid #E87F24;
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(to right, #ffffff, #f7f7f7);
+
+}
+
+.simbolosMaquina {
+    margin:auto;
+}
+
+/*Potenciador */
+.mensajePotenciador {
+    display: none;
+    position: fixed;
+    bottom: 10%;
+    right: 0%;
+    border:#FFC81E solid 3px;
+    border-radius: 7px;
+    background: #ffffff;
+    padding: 30px;
+    max-width: 70%;
+    max-height: 180px;
+    margin-left: auto;
+}
+.mensajeExplicativo {
+    display: none;
+    position: fixed;
+    bottom: 10%;
+    left: 0%;
+    border:#FFC81E solid 3px;
+    border-radius: 7px;
+    background: #ffffff;
+    padding: 30px;
+    max-width: 70%;
+    max-height: 159px;
+    margin-left: auto;
+}
+.apareceIzq {
+    display: block;
+    animation: AnimacionMensajeIzq 2s;
+}
+@keyframes AnimacionMensajeIzq {
+    from {transform: translateX(-100vw)}
+    to {transform: translateX(0vw)}
+}
+.desapareceIzq {
+    display: block;
+    animation: AnimacionMensajeVuelve 2s;
+}
+@keyframes AnimacionMensajeVuelve {
+    from {transform: translateX(0vw)}
+    to {transform: translateX(-100vw)}
+}
+
+.opcionesArrayPotenciador {
+    margin-top: 30px;
+}
+
+.botonQuitar {
+    margin-left: 90%;
+    padding: 2px;
+    margin-top: 15px;
+    border-radius: 7px;
+    padding: 5px;
+    background: linear-gradient(to right, #E87F24, #FFC81E);
+}
+.botonQuitar:hover {
+    box-shadow: 2px 2px 1px 0.5px #353535;
+    background: var(--color-hover-reiniciar);
+}
+
+/* Animacion entrada mensaje */
+.visible {
+    display: block;
+    animation: AnimacionMensajePotenciador 2s;
+}
+
+@keyframes AnimacionMensajePotenciador {
+    from {transform: translateX(100vw)}
+    to {transform: translateX(0vw)}
+}
+
+/* Animacion salida mensaje */
+.salida {
+    display: block;
+    animation: AnimacionMensajeSalida 2s ;
+}
+@keyframes AnimacionMensajeSalida {
+    from {transform: translateX(0vw)}
+    to {transform: translateX(100vw)}
+}

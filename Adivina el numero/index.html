@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina el número</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="adivina">
+        <h2 class="titulo">¡Adivina el número!</h2>
+        <h4 class="pista">Hay un número entre el 1 y el 100 que tienes que adivinar
+            escribiéndolo aqui debajo, te iré dando pistas, no te preocupes.
+            ¡Suerte!
+        </h4>
+        <button class="Empezar">¡EMPEZAR!</button>
+        <p class="numeroAdivinar"></p>
+        <input class="insertarNumero" min="1" max="100" 
+        type="number" placeholder="Ej: 1...">
+        <button class="enviar">Enviar</button>
+        <button class="reinicio">Reiniciar</button>
+        <div class="mensajesDinamicos">
+            <p id="mensajes"></p>
+        </div>
+    </div>
+    <div class="intentos">
+        <h4>Número de intentos:</h4>
+        <p class="numeroIntentos">0</p>
+        <p class="parrafoTiempo">30s</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

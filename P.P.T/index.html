@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto: Piedra, Papel o Tijeras.</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&family=Fredoka:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="padre">
+     <div class="eleccion">
+        <div class="simbolos">
+            <p class="eleccionHumana"></p>
+            <p class="eleccionJugador"></p>
+        </div>
+        <div class="humano">
+            <button class="piedra">💎</button>
+            <button class="papel">📋</button>
+            <button class="tijeras">✂️</button>
+        </div>
+    </div>
+    
+    <div class="medio">
+        <div class="marcador"></div>
+        <button class="vs">VS</button>
+        <p class="resultado"></p>
+        <button class="reiniciarPartida">Reiniciar Partida</button>
+    </div>
+
+    <div class="maquina">
+        <div class="simbolosMaquina">
+            <p class="eleccionMaquina"></p>
+            <p class="eleccionMachine"></p>
+        </div>
+    </div>
+    </div>
+    <div class="mensajePotenciador">
+        <p><h3>🔥¡POTENCIADOR ACTIVADO!🔥</h3> Ahora tu rival solo puede usar:</p>
+        <p class="opcionesArrayPotenciador"></p>
+        <button class="botonQuitar">➡︎</button>
+    </div>
+    <div class="mensajeExplicativo">
+        <h3>¡Nueva funcionalidad!</h3>
+        <p>¡Has ganado dos rondas seguidas! Esto te permite usar un potenciador que limita las opciones de tu rival de 3 a 2, 
+        avisándote cual de las opciones no se le permite usar. Úsalo con cabeza ya que solo se podrá usar 1 vez. ¡Suerte!</p>
+        <p>"Pulsa el boton 🔥potenciador🔥 para quitar este mensaje"</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
