@@ -60,9 +60,20 @@ button {
     gap: 5px;
 }
 
-.juegoSeleccionado {
-    display: flex;
+.juegoTarjeta {
+    display: none;
     justify-content: flex-end;
     width: 50%;
     padding: 30px;
+}
+.juegoTarjetaMostrar {
+    display: block;
+    margin-left: auto;
+    color: var(--color-letra);
+    border: 10px solid var(--color-fondo-tele);
+    border-radius: 4px;
+    background-color: var(--color-madera-tele);
+    margin: 30px;
+    font-size: 20px;
+
 }
