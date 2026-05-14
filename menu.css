@@ -48,17 +48,19 @@ button {
 .estructuraCentral {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    margin-top: 100px;
     width: 100%;
     
 }
 .menuEleccion {
     margin: 30px;
+    margin-left: 180px;
     width: 30%;
     height: 16%;
     border: solid 70px var(--color-madera-tele);
     border-radius: 4px;
-    background-color: var(--color-pantalla-tele);
-    
+    background-color: var(--color-fondo-tele);
 }
 
 .pantallaMenu {
@@ -92,7 +94,7 @@ button {
     width: 900px;
     height: 500px;
     animation: transicionTarjeta 2s;
-    
+    margin-left: 120px;
 }
 .transicionSalidaTarjeta {
     display: block;
