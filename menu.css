@@ -49,15 +49,17 @@ button {
     display: flex;
     flex-direction: row;
     align-items: center;
+    position: relative;
     margin-top: 100px;
     width: 100%;
-    
+    height: 600px;
 }
 .menuEleccion {
     margin: 30px;
     margin-left: 180px;
+    margin-top: 110px;
     width: 30%;
-    height: 16%;
+    height: 332px;
     border: solid 70px var(--color-madera-tele);
     border-radius: 4px;
     background-color: var(--color-fondo-tele);
@@ -80,6 +82,8 @@ button {
     display: none;
     justify-content: flex-end;
     align-content: space-around;
+    position: absolute;
+    left: 40%;
     width: 64%;
     padding: 30px;
 }
@@ -96,7 +100,7 @@ button {
     animation: transicionTarjeta 2s;
     margin-left: 120px;
 }
-.transicionSalidaTarjeta {
+.transicionVuelta {
     display: block;
     color: var(--color-letra);
     border: 10px solid var(--color-fondo-tele);
@@ -104,11 +108,26 @@ button {
     background-color: var(--color-madera-tele);
     margin: 24px;
     font-size: 20px;
-    animation: transicionSalidaTarjeta 2s;
+    animation: transicionVuelta 2s;
 }
+.transicionIntroducirTarjeta {
+    display: block;
+    color: var(--color-letra);
+    border: 10px solid var(--color-fondo-tele);
+    border-radius: 4px;
+    background-color: var(--color-madera-tele);
+    margin: 24px;
+    font-size: 20px;
+    animation: transicionSalidaTarjeta 4s;
+}
+/* Transiciones */
 @keyframes transicionTarjeta {
     from {transform: translateX(100vw);}
     to {transform: translateX(0vw);}
+}
+@keyframes transicionVuelta {
+    from {transform: translateX(0vw);}
+    to {transform: translateX(100vw);}
 }
 @keyframes transicionSalidaTarjeta {
     from {transform: translateY(0vw);}
