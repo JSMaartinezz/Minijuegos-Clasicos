@@ -16,7 +16,7 @@ button {
 }
 
 :root {
-    --color-fondo-body: #093C5D;
+    --color-fondo-body: #E1DCC9;
     --color-fondo-tele: #252525;
     --color-madera-tele: #8A5F41;
     --color-letra:#F6F4E8;
@@ -24,6 +24,7 @@ button {
     --color-sombra-tele: #000000;
     --color-detalles-tele: #949494;
     --color-rejilla-tele: #cccccc;
+    
 }
 /* Cuerpo del menu */
 .padre {
@@ -37,13 +38,14 @@ button {
     display: flex;
     padding: 8px;
     width: 100%;
-    height: 88px;
+    height: 136px;
     justify-content: center;
     align-items: center;
     align-self: center;
     flex-direction: column;
     border: solid 5px var(--color-madera-tele);
-    color: var(--color-letra);
+    color: var(--color-fondo-tele);
+    font-size: 20px;
 }
 
 /* Estructura central */
@@ -67,10 +69,43 @@ button {
     width: 30%;
     height: 332px;
     border: solid 10px var(--color-madera-tele);
+    background-color: var(--color-fondo-tele);
     border-radius: 4px;
     box-shadow: 3px 3px 2px 3px var(--color-sombra-tele);
+    z-index: 2;
 }
-
+.antena-tele-1 {
+    display: flex;
+    position: absolute;
+    border: 3px solid var(--color-detalles-tele);
+    height: 180px;
+    width: 2px;
+    left: 432px;
+    bottom: 358px;
+    transform: rotate(-20deg);
+}
+.antena-tele-2 {
+    display: flex;
+    position: absolute;
+    border: 3px solid var(--color-detalles-tele);
+    height: 180px;
+    width: 2px;
+    left: 500px;
+    bottom: 358px;
+    transform: rotate(20deg);
+}
+.pie-menu-tele {
+    display: flex;
+    position: absolute;
+    border: 3px solid var(--color-fondo-tele);
+    background: var(--color-madera-tele);
+    height:32px;
+    width:300px;
+    top: 500px;
+    left:310px;
+    box-shadow: 3px 3px 2px 3px var(--color-sombra-tele);
+    border-radius: 5px;
+}
 .pantallaMenu {
     display: flex;
     flex-direction: column;
@@ -90,7 +125,46 @@ button {
     flex-direction: column;
     background-color: var(--color-detalles-tele);
     border: 6px solid var(--color-fondo-tele);
+    border-radius: 4px;
     width: 111px;
+    height: 312px;
+    overflow: hidden;
+}
+.pantalla-superior {
+    display: flex;
+    align-self: center;
+    margin-top: 10px;
+    height: 25px;
+    width: 65px;
+    border: 3px solid var(--color-sombra-tele);
+    background-color: var(--color-fondo-tele);
+}
+.parte-superior-detalles-tele {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: center;
+    height: 100px;
+    width: 50px;
+    gap: 11px;
+}
+.volumen-1 {
+    display: flex;
+    border: 3px solid var(--color-rejilla-tele);
+    background: var(--color-pantalla-tele);
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    margin-top: 16px;
+}
+.volumen-2 {
+    display: flex;
+    border: 3px solid var(--color-rejilla-tele);
+    background: var(--color-pantalla-tele);
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    margin-top: 16px;
 }
 .rejilla-tele {
     display: flex;
@@ -110,8 +184,7 @@ button {
     flex-direction: column;
     align-content: center;
     align-self: self-end;
-    margin-top: 80px;
-    height: 120px;
+    height: 110px;
     background-color:  var(--color-fondo-tele);
     margin-right: 4px;
     margin-bottom: 5px;
@@ -120,6 +193,8 @@ button {
 .parte-inferior-detalles-tele {
     display: flex;
     flex-direction: row;
+    height: 120px;
+    gap: 10px;
 }
 .rectangulo-izq {
     display: flex;
@@ -127,10 +202,8 @@ button {
     height: 5px;
     align-self:flex-start;
     width: 40px;
-    height: 120px;
+    height: 110px;
     border: solid 3px;
-    margin-top: 80px;
-    margin-bottom: 5px;
     margin-left: 4px;
     background: var(--color-sombra-tele);
 }
