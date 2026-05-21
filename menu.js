@@ -14,10 +14,14 @@ let tituloTarjeta = document.querySelector(".tituloTarjeta");
 // Evento click boton PPT //
 botonPPT.addEventListener("click", function() {
     if (juegoTarjeta.classList.contains("juegoTarjetaMostrar") === true) {
+        botonTarjeta.classList.remove("hover-adivina");
+        botonTarjeta.classList.add("hover-ppt");
         juegoTarjeta.classList.add("transicionVuelta");
         juegoTarjeta.addEventListener("animationend", function() {
             if (event.animationName === 'transicionVuelta') {
                 console.log("La animacion especifica ha terminado");
+                botonTarjeta.classList.remove("hover-adivina");
+                botonTarjeta.classList.add("hover-ppt");
                 juegoTarjeta.classList.add("juegoTarjeta");
                 juegoTarjeta.classList.remove("transicionVuelta");
                 juegoTarjeta.classList.remove("juegoTarjetaMostrar");
@@ -34,6 +38,8 @@ botonPPT.addEventListener("click", function() {
         }, 1500);
         urlJuego = "P.P.T/index.html";
     } else {juegoTarjeta.classList.add("juegoTarjetaMostrar")
+        botonTarjeta.classList.remove("hover-adivina");
+        botonTarjeta.classList.add("hover-ppt");
         tituloTarjeta.textContent = "Piedra, Papel o Tijeras";
         imagenTarjeta.src = "imagenes/PPT-imagen.png";
         descripcionTarjeta.textContent = "El clásico Piedra, Papel o tijeras pero con una funcionalidad nueva, entra y ¡DESCÚBRELA!";
@@ -54,10 +60,14 @@ botonTarjeta.addEventListener("click", function() {
 // Evento click boton Adivina el Numero //
 botonAdivinaNumero.addEventListener("click", function() {
     if (juegoTarjeta.classList.contains("juegoTarjetaMostrar") === true) {
+        botonTarjeta.classList.remove("hover-ppt");
+        botonTarjeta.classList.add("hover-adivina");
         juegoTarjeta.classList.add("transicionVuelta");
         juegoTarjeta.addEventListener("animationend", function() {
             if (event.animationName === 'transicionVuelta') {
                 console.log("La animacion especifica ha terminado");
+                botonTarjeta.classList.remove("hover-ppt");
+                botonTarjeta.classList.add("hover-adivina");
                 juegoTarjeta.classList.add("juegoTarjeta");
                 juegoTarjeta.classList.remove("transicionVuelta");
                 juegoTarjeta.classList.remove("juegoTarjetaMostrar");
@@ -74,6 +84,8 @@ botonAdivinaNumero.addEventListener("click", function() {
         }, 1500);
         urlJuego = "Adivina el numero/index.html";
     } else {juegoTarjeta.classList.add("juegoTarjetaMostrar")
+        botonTarjeta.classList.remove("hover-ppt");
+        botonTarjeta.classList.add("hover-adivina");
         tituloTarjeta.textContent = "Adivina el número";
         imagenTarjeta.src = "imagenes/adivina-numero.png";
         descripcionTarjeta.textContent = "Sé más ¡RÁPIDO! que el tiempo para adivinar el número escondido entre 1 y 100";
