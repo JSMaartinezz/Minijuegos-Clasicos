@@ -297,7 +297,7 @@ button {
 .juegoTarjetaMostrar {
     display: block;
     color: var(--color-letra);
-    border: 10px solid var(--color-fondo-tele);
+    border: 10px solid #412D15;
     border-radius: 4px;
     background-color: var(--color-madera-tele);
     margin: 32px;
