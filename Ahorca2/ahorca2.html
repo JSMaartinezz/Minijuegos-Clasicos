@@ -8,14 +8,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&family=Fredoka:wght@300..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="padre">
-        <div class="figura"></div>
-        <div class="input-texto">
-            <input class="adivinar-letra" type="text">
-            <input class= "adivinar-palabra" type="text">
+    <div class="estructura-central">
+        <div class="cantidad-vidas">
+            <p class="vidas">♥️♥️♥️♥️♥️♥️</p>
+            <button class="sacrificio">Sacrifica una vida</button>
         </div>
+        <div class="figura">
+            <div class="cuerda-figura"></div>
+            <div class="parte-derecha-figura"></div>
+            <div class="parte-angulo"></div>
+            <div class="parte-central-figura"></div>
+            <div class="parte-abajo-figura"></div>
+            <div class="cuerpo">
+                <div class="cabeza"></div> 
+                <div class="brazo-izq"></div> 
+                <div class="brazo-der"></div> 
+                <div class="tronco"></div> 
+                <div class="pierna-izq"></div> 
+                <div class="pierna-der"></div>
+            </div>
+        </div>
+        <div class="conjunto-input">
+            <div class="input-letras">
+                <input class="adivinar-letra" type="text">
+                <button class="letras">Añadir letra</button>
+            </div>
+            <div class="input-palabra">
+                <input class= "adivinar-palabra" type="text">
+                <button class="palabra">Adivinar palabra</button>
+            </div>
+        </div>
+    </div>
+    <div class="estructura-footer">
         <div class="hueco-letras"></div>
         <div class="letras-usadas"></div>
     </div>
+    <script src="ahorca2.js"></script>
 </body>
 </html>
