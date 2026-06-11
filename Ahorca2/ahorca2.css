@@ -6,28 +6,96 @@
 }
 body {
     font-family: "Fredoka", sans-serif;
-    margin: auto;
     background-color: var(--color-fondo-body);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 :root {
-    --color-fondo-body: #FFF6F6;
-    --color:#8CC7C4;
-    --color:#2C687B;
-    --color:#DB1A1A;
+    --color-fondo-body: #EEE0CC;
+    --color-fondo-pizarra: #2B5748;
+    --color-borde-pizarra: #F5F5F5;
     --color-figura:#C08552;
     --color-borde-figura:#4B2E2B;
     --color-cuerpo:#000000;
+    --color:#8CC7C4;
+    --color:#2C687B;
+    --color:#DB1A1A;
 }
 /* Estructura del juego */
 .estructura-central {
     display: flex;
+    flex-direction: row;
+    gap: 100px;
+    width: 90%;
+    height: 800px;
+    background-color: var(--color-fondo-pizarra);
+    border: 5px solid var(--color-borde-pizarra);
+    border-radius: 4px;
 }
-
+.cantidad-vidas {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: center;
+    align-items: center;
+    gap: 10px;
+    height: 24%;
+    width: 33%;
+    font-size: 20px;
+}
+.vidas {
+    display: flex;
+    align-items: center;
+}
+/* Inputs */
+.conjunto-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: center;
+    align-items: center;
+    gap: 50px;
+    width: 33%;
+    height: 30%;
+    font-size: 20px;
+}
+.input-letra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.input-palabra {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+/* Parte central del juego */
+.centro-juego {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 333px;
+    height: 45%;
+    margin: 30px;
+}
+.activar-juego {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    height: 20%;
+    width: 100px;
+}
 /* Figura ahorcado */
 .figura {
     display: flex;
     position: relative;
-    margin: 0 auto;
+    align-items: center;
     width: 400px;
     height: 400px;
 }
