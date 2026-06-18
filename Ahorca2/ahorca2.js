@@ -75,6 +75,7 @@ let seisLetras = [
 
 // Evento comenzar el juego //
 botonGenerarPalabra.addEventListener("click", function() {
+    // Modal //
     let overlayBody = document.createElement("div");
     overlayBody.classList.add("overlayBody");
     document.body.appendChild(overlayBody);
@@ -91,26 +92,58 @@ botonGenerarPalabra.addEventListener("click", function() {
     let agruparBotonesMenu = document.createElement("div");
     agruparBotonesMenu.classList.add("botonesMenuLetras");
     menuElegirLetras.appendChild(agruparBotonesMenu);
-
+    // Boton 4 letras //
     let botonCuatroLetras = document.createElement("button");
     botonCuatroLetras.textContent = "Palabras de 4 letras.";
     botonCuatroLetras.classList.add("cuatroLetras");
     agruparBotonesMenu.appendChild(botonCuatroLetras);
-
+    botonCuatroLetras.addEventListener("click", function() {
+      menuElegirLetras.classList.remove("menuLetras");
+      menuElegirLetras.classList.add("cerrarModal");
+      setTimeout(function() {
+        menuElegirLetras.remove();
+        overlayBody.remove();
+      }, 2000);
+    })
+    // Boton 5 letras //
     let botonCincoLetras = document.createElement("button");
     botonCincoLetras.textContent = "Palabras de 5 letras.";
     botonCincoLetras.classList.add("cincoLetras");
     agruparBotonesMenu.appendChild(botonCincoLetras);
+    botonCincoLetras.addEventListener("click", function() {
+      menuElegirLetras.classList.remove("menuLetras");
+      menuElegirLetras.classList.add("cerrarModal");
+      setTimeout(function() {
+        menuElegirLetras.remove();
+        overlayBody.remove();
+      }, 2000);
+    })
 
+    // Boton 6 letras //
     let botonSeisLetras = document.createElement("button");
     botonSeisLetras.textContent = "Palabras de 6 letras.";
     botonSeisLetras.classList.add("seisLetras");
     agruparBotonesMenu.appendChild(botonSeisLetras);
+    botonSeisLetras.addEventListener("click", function() {
+      menuElegirLetras.classList.remove("menuLetras");
+      menuElegirLetras.classList.add("cerrarModal");
+      setTimeout(function() {
+        menuElegirLetras.remove();
+        overlayBody.remove();
+      }, 2000);
+    })
 
+    // Boton al azar letras //
     let botonMezclarArrays = document.createElement("button");
     botonMezclarArrays.textContent = "Al azar entre las tres listas";
     botonMezclarArrays.classList.add("mezclarArrays");
     agruparBotonesMenu.appendChild(botonMezclarArrays);
-
-    
+    botonMezclarArrays.addEventListener("click", function() {
+      menuElegirLetras.classList.remove("menuLetras");
+      menuElegirLetras.classList.add("cerrarModal");
+      setTimeout(function() {
+        menuElegirLetras.remove();
+        overlayBody.remove();
+      }, 2000);
+    })
 });
