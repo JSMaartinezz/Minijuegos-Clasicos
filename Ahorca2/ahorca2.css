@@ -114,8 +114,9 @@ body {
     justify-content: space-around;
     align-items: center;
     width: 333px;
-    height: 45%;
+    height: 85%;
     margin: 30px;
+    gap: 5px;
 }
 .activar-juego {
     display: flex;
@@ -336,4 +337,21 @@ button {
     background: linear-gradient(to right, #fff9d281, #5f8075);
     box-shadow: 1px 1px 8px 0.5px var(--color-cuerpo);
     font-size: 14px;
+}
+/* Huecos para letras */
+.hueco-letras {
+    display: flex;
+    width: 700px;
+    height: 120px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+.huecosLetras {
+    display: flex;
+    flex-direction: row;
+    width: 60px;
+    height: 2px;
+    color: var(--color-borde-pizarra);
+    background-color: var(--color-borde-pizarra);
 }

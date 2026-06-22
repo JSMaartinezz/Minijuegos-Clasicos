@@ -72,6 +72,9 @@ let seisLetras = [
   "ciudad",
   "teatro"
 ];
+let arraysAgrupados = [cuatroLetras, cincoLetras, seisLetras];
+let arrayAzarEntreTres = Math.floor(Math.random()* arraysAgrupados.length);
+let resultadoArrayAzar = arraysAgrupados[arrayAzarEntreTres];
 
 // Evento comenzar el juego //
 botonGenerarPalabra.addEventListener("click", function() {
@@ -104,6 +107,15 @@ botonGenerarPalabra.addEventListener("click", function() {
         menuElegirLetras.remove();
         overlayBody.remove();
       }, 2000);
+      let palabraAleatoria4Letras = Math.floor(Math.random()*cuatroLetras.length);
+      let palabraAleatoria4LetrasRandom = cuatroLetras[palabraAleatoria4Letras];
+      console.log(palabraAleatoria4LetrasRandom);
+      for (let i = 0; i < palabraAleatoria4LetrasRandom.length; i++) {
+        let divHuecoLetra = document.createElement("div");
+        huecoLetras.appendChild(divHuecoLetra);
+        divHuecoLetra.classList.add("huecosLetras"); 
+        console.log(palabraAleatoria4LetrasRandom[i]);
+      };
     })
     // Boton 5 letras //
     let botonCincoLetras = document.createElement("button");
@@ -117,6 +129,15 @@ botonGenerarPalabra.addEventListener("click", function() {
         menuElegirLetras.remove();
         overlayBody.remove();
       }, 2000);
+      let palabraAleatoria5Letras = Math.floor(Math.random()*cincoLetras.length);
+      let palabraAleatoria5LetrasRandom = cincoLetras[palabraAleatoria5Letras];
+      console.log(palabraAleatoria5LetrasRandom);
+      for (let i = 0; i < palabraAleatoria5LetrasRandom.length; i++) {
+        let divHuecoLetra = document.createElement("div");
+        huecoLetras.appendChild(divHuecoLetra);
+        divHuecoLetra.classList.add("huecosLetras"); 
+        console.log(palabraAleatoria5LetrasRandom[i]);
+      };      
     })
 
     // Boton 6 letras //
@@ -131,6 +152,15 @@ botonGenerarPalabra.addEventListener("click", function() {
         menuElegirLetras.remove();
         overlayBody.remove();
       }, 2000);
+      let palabraAleatoria6Letras = Math.floor(Math.random()*seisLetras.length);
+      let palabraAleatoria6LetrasRandom = seisLetras[palabraAleatoria6Letras];
+      console.log(palabraAleatoria6LetrasRandom);
+      for (let i = 0; i < palabraAleatoria6LetrasRandom.length; i++) {
+        let divHuecoLetra = document.createElement("div");
+        huecoLetras.appendChild(divHuecoLetra);
+        divHuecoLetra.classList.add("huecosLetras"); 
+        console.log(palabraAleatoria6LetrasRandom[i]);
+      };      
     })
 
     // Boton al azar letras //
@@ -145,5 +175,14 @@ botonGenerarPalabra.addEventListener("click", function() {
         menuElegirLetras.remove();
         overlayBody.remove();
       }, 2000);
+      let obtenerPalabraRandom = Math.floor(Math.random()* resultadoArrayAzar.length);
+      let palabraObtenidaArraysAzar = resultadoArrayAzar[obtenerPalabraRandom];
+      for (let i = 0; i < palabraObtenidaArraysAzar.length; i++) {
+        let divHuecoLetra = document.createElement("div");
+        huecoLetras.appendChild(divHuecoLetra);
+        divHuecoLetra.classList.add("huecosLetras");
+        console.log(palabraObtenidaArraysAzar[i]); 
+      };      
     })
 });
+
