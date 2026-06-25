@@ -79,6 +79,13 @@ body {
     width: 33%;
     font-size: 20px;
 }
+.letras-usadas {
+    display: flex;
+    width: 300px;
+    height: 40px;
+    border: 3px solid var(--color-fondo-modal);
+    border-radius: 5px;
+}
 .vidas {
     display: flex;
     align-items: center;
@@ -351,7 +358,10 @@ button {
     display: flex;
     flex-direction: row;
     width: 60px;
-    height: 2px;
+    height: 45px;
     color: var(--color-borde-pizarra);
-    background-color: var(--color-borde-pizarra);
+    border-bottom: 3px solid var(--color-borde-pizarra);
+    font-size: 45px;
+    align-items: center;
+    justify-content: center;
 }
