@@ -21,6 +21,7 @@ let botonPalabra = document.querySelector(".palabra");
 // Vidas //
 let cantidadVidas = document.querySelector(".cantidad-vidas");
 let vidas = document.querySelector(".vidas");
+let vidasRestantes = 6;
 let botonSacrificioVidas = document.querySelector(".sacrificio");
 // Hueco letras //
 let estructuraFooter = document.querySelector(".estructura-footer");
@@ -193,13 +194,45 @@ botonGenerarPalabra.addEventListener("click", function() {
 });
 // Evento boton letras input //
 botonLetras.addEventListener("click", function() {
+  let hasAcertadoLetra = false;
   let letraValida = adivinarLetra.value;
   let conjuntoHuecosLetras = document.querySelectorAll(".huecosLetras");
   for (let i = 0; i < palabraEnUso.length; i++) {
     if (letraValida === palabraEnUso[i]) {
       conjuntoHuecosLetras[i].textContent = letraValida;
+      hasAcertadoLetra = true;
     }
   }
+  if (hasAcertadoLetra === false && vidasRestantes > 0) {
+    vidasRestantes--;
+    console.log(vidasRestantes);
+    switch (vidasRestantes) {
+      case 5:
+        vidas.textContent = "♥️♥️♥️♥️♥️💔";
+        cabeza.style.display = "block";
+        break;
+      case 4:
+        vidas.textContent = "♥️♥️♥️♥️💔💔";
+        tronco.style.display = "block";
+        break;
+      case 3:
+        vidas.textContent = "♥️♥️♥️💔💔💔";
+        piernaIzq.style.display = "block";
+        break;
+      case 2:
+        vidas.textContent = "♥️♥️💔💔💔💔";
+        piernaDer.style.display = "block";
+        break;
+      case 1:
+        vidas.textContent = "♥️💔💔💔💔💔";
+        brazoIzq.style.display = "block";
+        break;
+      case 0:
+        vidas.textContent = "💔💔💔💔💔💔";
+        brazoDer.style.display = "block";
+        break;
+    }
+  } 
   adivinarLetra.value = "";
 })
 // Evento boton adivinar palabra //
@@ -211,7 +244,36 @@ botonPalabra.addEventListener("click", function() {
      conjuntoHuecosLetras[i].textContent = palabraAdivinada[i];
     }
   } else {
-    // logica de perder vida //
+    if (vidasRestantes > 0) {
+    vidasRestantes--;
+    console.log(vidasRestantes);
+    switch (vidasRestantes) {
+      case 5:
+        vidas.textContent = "♥️♥️♥️♥️♥️💔";
+        cabeza.style.display = "block";
+        break;
+      case 4:
+        vidas.textContent = "♥️♥️♥️♥️💔💔";
+        tronco.style.display = "block";
+        break;
+      case 3:
+        vidas.textContent = "♥️♥️♥️💔💔💔";
+        piernaIzq.style.display = "block";
+        break;
+      case 2:
+        vidas.textContent = "♥️♥️💔💔💔💔";
+        piernaDer.style.display = "block";
+        break;
+      case 1:
+        vidas.textContent = "♥️💔💔💔💔💔";
+        brazoIzq.style.display = "block";
+        break;
+      case 0:
+        vidas.textContent = "💔💔💔💔💔💔";
+        brazoDer.style.display = "block";
+        break;
+    }
+    }
   }
   adivinarPalabra.value = "";  
 })
