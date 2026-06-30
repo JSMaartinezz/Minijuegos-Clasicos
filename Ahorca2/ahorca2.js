@@ -206,6 +206,8 @@ botonLetras.addEventListener("click", function() {
   if (hasAcertadoLetra === false && vidasRestantes > 0) {
     vidasRestantes--;
     console.log(vidasRestantes);
+    letrasExcluidas.push(letraValida);
+    letrasUsadas.textContent += letraValida + ",";
     switch (vidasRestantes) {
       case 5:
         vidas.textContent = "♥️♥️♥️♥️♥️💔";
@@ -277,4 +279,47 @@ botonPalabra.addEventListener("click", function() {
   }
   adivinarPalabra.value = "";  
 })
-
+// Evento sacrificar vida //
+botonSacrificioVidas.addEventListener("click", function() {
+  let letrasPorDescubrir = [];
+  let conjuntoHuecosLetras = document.querySelectorAll(".huecosLetras");
+  for (let i = 0; i < palabraEnUso.length; i++) {
+    if (conjuntoHuecosLetras[i].textContent === "") {
+      letrasPorDescubrir.push(palabraEnUso[i]);
+    }
+  }
+  let letraDescubiertaAleatoria = Math.floor(Math.random()*letrasPorDescubrir.length);
+  let letraRegalada = letrasPorDescubrir[letraDescubiertaAleatoria];
+  for (let i = 0; i < palabraEnUso.length; i++) {
+    if (palabraEnUso[i] === letraRegalada) {
+      conjuntoHuecosLetras[i].textContent = letraRegalada;
+    }
+  }
+  vidasRestantes--;
+    switch (vidasRestantes) {
+      case 5:
+        vidas.textContent = "♥️♥️♥️♥️♥️💔";
+        cabeza.style.display = "block";
+        break;
+      case 4:
+        vidas.textContent = "♥️♥️♥️♥️💔💔";
+        tronco.style.display = "block";
+        break;
+      case 3:
+        vidas.textContent = "♥️♥️♥️💔💔💔";
+        piernaIzq.style.display = "block";
+        break;
+      case 2:
+        vidas.textContent = "♥️♥️💔💔💔💔";
+        piernaDer.style.display = "block";
+        break;
+      case 1:
+        vidas.textContent = "♥️💔💔💔💔💔";
+        brazoIzq.style.display = "block";
+        break;
+      case 0:
+        vidas.textContent = "💔💔💔💔💔💔";
+        brazoDer.style.display = "block";
+        break;
+    }
+})
