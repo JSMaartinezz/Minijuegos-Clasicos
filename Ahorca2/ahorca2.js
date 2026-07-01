@@ -36,42 +36,9 @@ let muñecoCompleto = false;
 let palabraEnUso = null;
 let letrasExcluidas = [];
 // Arrays //
-let cuatroLetras = [
-  "casa",
-  "mesa",
-  "gato",
-  "lobo",
-  "peto",
-  "agua",
-  "vino",
-  "mapa",
-  "rojo",
-  "azul"
-];
-let cincoLetras = [
-  "coche",
-  "calle",
-  "amigo",
-  "chulo",
-  "libro",
-  "perro",
-  "noche",
-  "campo",
-  "verde",
-  "queso"
-];
-let seisLetras = [
-  "zapato",
-  "camisa",
-  "abuelo",
-  "escoba",
-  "fuente",
-  "puerta",
-  "gambas",
-  "bosque",
-  "ciudad",
-  "teatro"
-];
+let cuatroLetras = ["gato", "casa", "pelo", "luna", "azul", "rojo", "vida", "pala", "boca", "mano", "jugo", "sopa", "taza", "lobo", "toro", "nube", "cine", "nave", "mapa", "cama", "pato", "sapo", "pino", "mesa", "bota", "pote", "faro", "fuego", "hilo", "isla", "vaso", "raso", "moto", "auto", "tren", "yate", "bote", "loza", "piso", "tubo", "voto", "bano", "banco", "caja", "reloj", "hoja", "paja", "rayo", "nido", "seda"];
+let cincoLetras = ["gambas", "perro", "playa", "queso", "fruta", "libro", "verde", "piano", "agua", "arbol", "carta", "disco", "hielo", "llave", "cable", "raton", "tigre", "viento", "sueno", "barco", "coche", "gallo", "gordo", "flaco", "playa", "arena", "pasto", "manta", "falda", "blusa", "gorro", "bolso", "fresa", "limon", "mango", "clavo", "martillo", "puente", "torre", "crema", "salsa", "pasta", "arroz", "trigo", "broma", "rueda", "radio", "llama", "miedo", "suerte"];
+let seisLetras = ["codigo", "cabeza", "zapato", "camino", "puerta", "cocina", "puente", "huevo", "musica", "pajaro", "teatro", "verano", "fiesta", "suerte", "futbol", "jirafa", "camisa", "pantalon", "abrigo", "corbata", "tomate", "patata", "cebolla", "pepino", "platano", "cereza", "sandia", "conejo", "caballo", "oveja", "pajaro", "ballena", "tiburon", "medusa", "piedra", "madera", "hierro", "bronce", "ciudad", "pueblo", "barrio", "camion", "cohete", "dibujo", "pintura", "novela", "poema", "cuento", "magia", "truco"];
 let arraysAgrupados = [cuatroLetras, cincoLetras, seisLetras];
 // Evento comenzar el juego //
 botonGenerarPalabra.addEventListener("click", function() {
@@ -203,6 +170,13 @@ botonLetras.addEventListener("click", function() {
       hasAcertadoLetra = true;
     }
   }
+  let palabraFormada = "";
+  for (let i = 0; i < conjuntoHuecosLetras.length; i++) {
+    palabraFormada += conjuntoHuecosLetras[i].textContent;
+  }
+  if (palabraFormada === palabraEnUso) {
+    mostrarFinJuego("🎉 ¡Enhorabuena! Has acertado la palabra 🎉");
+  }
   if (hasAcertadoLetra === false && vidasRestantes > 0) {
     vidasRestantes--;
     console.log(vidasRestantes);
@@ -232,6 +206,7 @@ botonLetras.addEventListener("click", function() {
       case 0:
         vidas.textContent = "💔💔💔💔💔💔";
         brazoDer.style.display = "block";
+        mostrarFinJuego("💀 ¡Game Over! Has perdido 💀");        
         break;
     }
   } 
@@ -245,6 +220,7 @@ botonPalabra.addEventListener("click", function() {
     for (let i = 0; i < palabraEnUso.length; i++) {
      conjuntoHuecosLetras[i].textContent = palabraAdivinada[i];
     }
+    mostrarFinJuego("🎉 ¡Enhorabuena! Has acertado la palabra 🎉");
   } else {
     if (vidasRestantes > 0) {
     vidasRestantes--;
@@ -273,6 +249,7 @@ botonPalabra.addEventListener("click", function() {
       case 0:
         vidas.textContent = "💔💔💔💔💔💔";
         brazoDer.style.display = "block";
+        mostrarFinJuego("💀 ¡Game Over! Has perdido 💀");        
         break;
     }
     }
@@ -281,6 +258,7 @@ botonPalabra.addEventListener("click", function() {
 })
 // Evento sacrificar vida //
 botonSacrificioVidas.addEventListener("click", function() {
+  botonSacrificioVidas.disabled = true;
   let letrasPorDescubrir = [];
   let conjuntoHuecosLetras = document.querySelectorAll(".huecosLetras");
   for (let i = 0; i < palabraEnUso.length; i++) {
@@ -294,6 +272,13 @@ botonSacrificioVidas.addEventListener("click", function() {
     if (palabraEnUso[i] === letraRegalada) {
       conjuntoHuecosLetras[i].textContent = letraRegalada;
     }
+  }
+  let palabraFormada = "";
+  for (let i = 0; i < conjuntoHuecosLetras.length; i++) {
+    palabraFormada += conjuntoHuecosLetras[i].textContent;
+  }
+  if (palabraFormada === palabraEnUso) {
+    mostrarFinJuego("🎉 ¡Enhorabuena! Has acertado la palabra 🎉");
   }
   vidasRestantes--;
     switch (vidasRestantes) {
@@ -320,6 +305,30 @@ botonSacrificioVidas.addEventListener("click", function() {
       case 0:
         vidas.textContent = "💔💔💔💔💔💔";
         brazoDer.style.display = "block";
+        mostrarFinJuego("💀 ¡Game Over! Has perdido 💀");
         break;
     }
 })
+
+// Modal Game Over //
+function mostrarFinJuego(mensaje) {
+  let FondoOscuroModalGameOver = document.createElement("div");
+  FondoOscuroModalGameOver.classList.add("overlayBody");
+  document.body.appendChild(FondoOscuroModalGameOver);
+
+  let modalGameOver = document.createElement("div");
+  modalGameOver.classList.add("modalGameOver");
+  document.body.appendChild(modalGameOver);
+
+  let mensajeModalGameOver = document.createElement("p");
+  modalGameOver.appendChild(mensajeModalGameOver);
+  mensajeModalGameOver.textContent = mensaje;
+
+  let botonJugarDeNuevo = document.createElement("button");
+  botonJugarDeNuevo.textContent = "Volver a Jugar";
+  botonJugarDeNuevo.classList.add("botonJugarDeNuevo");
+  modalGameOver.appendChild(botonJugarDeNuevo);
+  botonJugarDeNuevo.addEventListener("click", function() {
+    location.reload();
+  })
+}
