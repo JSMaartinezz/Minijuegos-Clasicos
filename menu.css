@@ -368,6 +368,12 @@ button {
 .hover-adivina {
     background-color: var(--color-letra);
 }
+.hover-ahorcado {
+    background-color: var(--color-letra);
+}
+.hover-ahorcado:hover {
+    background: linear-gradient(to right, #cec79981, #83c9b1);
+}
 .hover-adivina:hover {
     background: linear-gradient(to right, rgb(255, 170, 170), rgb(88, 88, 255));
 }
@@ -376,6 +382,9 @@ button {
     box-shadow: 2px 2px 1px 0.5px var(--color-fondo-tele);
 }
 .PPT:hover {
+    box-shadow: 2px 2px 1px 0.5px var(--color-fondo-tele);
+}
+.ahorcado:hover {
     box-shadow: 2px 2px 1px 0.5px var(--color-fondo-tele);
 }
 
