@@ -1,0 +1,26 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Fredoka", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--color-fondo-body);
+}
+:root {
+    --color-fondo-body: #1B0C0C;
+    --color-fondo-tablero: #9A8678;
+    --color-borde-tablero: #4B4038;   
+}
+/* Tablero */
+.tablero {
+    display: flex;
+    background-color: var(--color-fondo-tablero);
+    border: 5px solid var(--color-borde-tablero);
+    border-radius: 20px;
+}
