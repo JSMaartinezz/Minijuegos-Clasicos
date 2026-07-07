@@ -10,21 +10,22 @@
 <body>
     <div class="estructura-juego">
         <div class="marcador">
-            <div class="potenciador">
-                <button id="invisible">Potenciador</button>
+            <div class="contenedor-potenciador">
+                <button id="boton-potenciador">Potenciador</button>
                 <p id="contador-potenciador">30s</p>
             </div>
+            <p>Puntuación actual:<span id="puntuacion-actual"> 0</span></p>
             <p>Puntuación Máxima: <span id="puntuacion-maxima">0</span></p>
-            <p id="puntuacion">0</p>
         </div>
-        <canvas class="tablero" width="1200" height="900"></canvas>
+        <canvas class="tablero" width="1000" height="800"></canvas>
         <div class="leyenda">
-            <p>Flecha derecha ➡️: Mover hacia la derecha</p>
-            <p>Flecha izquierda ⬅️: Mover hacia la izquierda</p>
-            <p>Flecha arriba ⬆️: Mover hacia arriba</p>
-            <p>Flecha abajo ⬇️: Mover hacia abajo</p>
-            <p>Barra espaciadora ↔️: Activar potenciador</p>
-            <p>¿Qué hace el potenciador? Te proporciona 10s de invisibilidad donde la serpiente no se podrá chocar con ningún obstaculo ni con su propio cuerpo, aunque con los bordes si sufrirá daño.</p>
+            <p>- Flecha derecha ➡️: Mover hacia la derecha</p>
+            <p>- Flecha izquierda ⬅️: Mover hacia la izquierda</p>
+            <p>- Flecha arriba ⬆️: Mover hacia arriba</p>
+            <p>- Flecha abajo ⬇️: Mover hacia abajo</p>
+            <p>- Barra espaciadora ↔️: Activar potenciador</p>
+            <p>🔥¿Qué hace el potenciador?🔥 Te proporciona 10s de invisibilidad donde la serpiente no se podrá chocar 
+            con ningún obstaculo ni con su propio cuerpo, aunque con los bordes si sufrirá daño.</p>
         </div>
     </div>
     <script src="snake.js"></script>

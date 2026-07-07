@@ -15,7 +15,10 @@ body {
 :root {
     --color-fondo-body: #1B0C0C;
     --color-fondo-tablero: #9A8678;
-    --color-borde-tablero: #4B4038;   
+    --color-borde-tablero: #4B4038;
+    --color-letras: #f5f5cc;
+    --color-fondo-marcador: #124D1C;
+    --color-borde-marcador: #73976A; 
 }
 /* Tablero */
 .tablero {
@@ -23,4 +26,41 @@ body {
     background-color: var(--color-fondo-tablero);
     border: 5px solid var(--color-borde-tablero);
     border-radius: 20px;
+}
+.estructura-juego {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+.marcador {
+    display: flex;
+    width: 200px;
+    height: 200px;
+    flex-direction: column;
+    text-align: justify;
+    padding: 15px;
+    gap: 20px;
+    color: var(--color-letras);
+    background-color: var(--color-fondo-marcador);
+    border: 5px solid var(--color-borde-marcador);
+    border-radius: 20px;
+}
+.leyenda {
+    display: flex;
+    width: 350px;
+    height: 400px;
+    flex-direction: column;
+    text-align: justify;
+    padding: 15px;
+    gap: 20px;
+    color: var(--color-letras);
+    background-color: var(--color-fondo-marcador);
+    border: 5px solid var(--color-borde-marcador);
+    border-radius: 20px;
+}
+.potenciador {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
