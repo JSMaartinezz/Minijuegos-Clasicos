@@ -18,7 +18,9 @@ body {
     --color-borde-tablero: #4B4038;
     --color-letras: #f5f5cc;
     --color-fondo-marcador: #124D1C;
-    --color-borde-marcador: #73976A; 
+    --color-borde-marcador: #73976A;
+    --color-manzana-roja: #C62828;
+    --color-manzana-dorada: #E4B028; 
 }
 /* Tablero */
 .tablero {
