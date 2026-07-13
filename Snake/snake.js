@@ -10,6 +10,9 @@ let leyenda = document.querySelector(".leyenda");
 const tablero = document.querySelector(".tablero");
 const pincel = tablero.getContext("2d");
 const tamanoCasilla = 40;
+// Variables booleanas //
+let manzanaDoradaActiva = false;
+let temporizadorManzanaDorada;
 let snake = [
     {x: 12, y: 10},
     {x: 11, y: 10},
@@ -28,23 +31,41 @@ function dibujarManzana () {
     );
 }
 function dibujarManzanaDorada () {
+    if (manzanaDoradaActiva === true) {
     pincel.fillStyle = "#E4B028";
     pincel.fillRect(manzanaDorada.x * tamanoCasilla, manzanaDorada.y * tamanoCasilla,
         tamanoCasilla, tamanoCasilla
     );
+    } else {};
 }
 // Funcion posicion aleatoria manzana //
 function posicionManzana () {
+    let manzanaEstaEncimaSerpiente;
+    do {
     manzanaRoja = {
         x: Math.floor(Math.random()* (tablero.width/tamanoCasilla)),
         y: Math.floor(Math.random()* (tablero.height/tamanoCasilla))
     };
+    manzanaEstaEncimaSerpiente = snake.some(bloque => bloque.x === manzanaRoja.x && bloque.y === manzanaRoja.y);
+    } while (manzanaEstaEncimaSerpiente);
 }
 function posicionManzanaDorada () {
+    clearTimeout(temporizadorManzanaDorada);
+    let manzanaDoradaEstaEncimaSerpiente;
+    do {
     manzanaDorada = {
         x: Math.floor(Math.random()* (tablero.width/tamanoCasilla)),
         y: Math.floor(Math.random()* (tablero.height/tamanoCasilla))
     };
+    manzanaDoradaEstaEncimaSerpiente = snake.some(bloque => bloque.x === manzanaDorada.x && bloque.y === manzanaDorada.y);
+    } while (manzanaDoradaEstaEncimaSerpiente);
+    manzanaDoradaActiva = true;
+    temporizadorManzanaDorada = setTimeout(() => {
+        manzanaDoradaActiva = false;
+        temporizadorManzanaDorada = setTimeout(() => {
+            posicionManzanaDorada();
+        }, 5000);
+    }, 4000);
 }
 // Funciones para movimientos serpiente //
 function dibujarSerpiente () {
