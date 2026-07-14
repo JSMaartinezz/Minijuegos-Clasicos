@@ -12,6 +12,7 @@ const pincel = tablero.getContext("2d");
 const tamanoCasilla = 40;
 // Variables booleanas //
 let manzanaDoradaActiva = false;
+let manzanaPodridaActiva = false;
 let temporizadorManzanaDorada;
 let snake = [
     {x: 12, y: 10},
@@ -19,6 +20,9 @@ let snake = [
     {x: 10, y: 10}
 ];
 let direccion = {x: 1, y: 0};
+let manzanaPodrida = {x: 12, y: 12};
+let temporizadorManzanaPodrida;
+posicionManzanaPodrida();
 let manzanaRoja = {x: 5, y: 5};
 posicionManzana();
 let manzanaDorada = {x: 9, y: 9};
@@ -36,6 +40,14 @@ function dibujarManzanaDorada () {
     pincel.fillRect(manzanaDorada.x * tamanoCasilla, manzanaDorada.y * tamanoCasilla,
         tamanoCasilla, tamanoCasilla
     );
+    } else {};
+}
+function dibujarManzanaPodrida() {
+    if (manzanaPodridaActiva === true) {
+        pincel.fillStyle = "#656D3F";
+        pincel.fillRect(manzanaPodrida.x * tamanoCasilla, manzanaPodrida.y * tamanoCasilla,
+            tamanoCasilla, tamanoCasilla
+        );
     } else {};
 }
 // Funcion posicion aleatoria manzana //
@@ -67,6 +79,24 @@ function posicionManzanaDorada () {
         }, 5000);
     }, 4000);
 }
+function posicionManzanaPodrida () {
+    clearTimeout(temporizadorManzanaPodrida);
+    let manzanaPodridaEstaEncimaSerpiente;
+    do {
+        manzanaPodrida = {
+            x: Math.floor(Math.random()* (tablero.width/tamanoCasilla)),
+            y: Math.floor(Math.random()* (tablero.height/tamanoCasilla))
+        };
+        manzanaPodridaEstaEncimaSerpiente = snake.some(bloque => bloque.x === manzanaPodrida.x && bloque.y === manzanaPodrida.y);
+    } while (manzanaPodridaEstaEncimaSerpiente);
+    manzanaPodridaActiva = true;
+    temporizadorManzanaPodrida = setTimeout(() => {
+        manzanaPodridaActiva = false;
+        temporizadorManzanaPodrida = setTimeout(() => {
+            posicionManzanaPodrida();
+        }, 5000);
+    }, 4000);
+}
 // Funciones para movimientos serpiente //
 function dibujarSerpiente () {
     pincel.fillStyle = "#124D1C";
@@ -85,10 +115,23 @@ function moverSerpiente() {
     if (manzanaRoja.x === snake[0].x && manzanaRoja.y === snake[0].y) {
         snake.unshift(nuevaPosicionCabeza);
         posicionManzana();
-    } else if (manzanaDorada.x === snake[0].x && manzanaDorada.y === snake[0].y) {
+    } else if (manzanaDoradaActiva && manzanaDorada.x === snake[0].x && manzanaDorada.y === snake[0].y) {
         snake.unshift(nuevaPosicionCabeza);
         snake.unshift(nuevaPosicionCabeza);        
-        posicionManzanaDorada();
+        manzanaDoradaActiva = false;
+        clearTimeout(temporizadorManzanaDorada);
+        temporizadorManzanaDorada = setTimeout(() => {
+            posicionManzanaDorada();
+        }, 5000);
+    } else if(manzanaPodridaActiva && manzanaPodrida.x === snake[0].x && manzanaPodrida.y === snake[0].y) {
+        snake.unshift(nuevaPosicionCabeza);
+        snake.pop();
+        snake.pop();
+        manzanaPodridaActiva = false;
+        clearTimeout(temporizadorManzanaPodrida);
+        temporizadorManzanaPodrida = setTimeout(() => {
+            posicionManzanaPodrida();
+        }, 5000);
     } else {
         snake.unshift(nuevaPosicionCabeza);
         snake.pop();
@@ -101,6 +144,7 @@ setInterval(() => {
     dibujarSerpiente();
     dibujarManzana();
     dibujarManzanaDorada();
+    dibujarManzanaPodrida();
 }, 150);
 
 // Evento movimiento teclas //
