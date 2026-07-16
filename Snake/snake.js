@@ -5,6 +5,7 @@ let contenedorPotenciador = document.querySelector(".contenedor-potenciador");
 let botonPotenciador = document.querySelector("#boton-potenciador");
 let contadorPotenciador = document.querySelector("#contador-potenciador");
 let puntuacionActual = document.querySelector("#puntuacion-actual");
+let puntosActuales = 0;
 let puntuacionMaxima = document.querySelector("#puntuacion-maxima");
 let leyenda = document.querySelector(".leyenda");
 const tablero = document.querySelector(".tablero");
@@ -114,10 +115,13 @@ function moverSerpiente() {
     };
     if (manzanaRoja.x === snake[0].x && manzanaRoja.y === snake[0].y) {
         snake.unshift(nuevaPosicionCabeza);
+        puntosActuales++;
+        puntuacionActual.textContent = puntosActuales;
         posicionManzana();
     } else if (manzanaDoradaActiva && manzanaDorada.x === snake[0].x && manzanaDorada.y === snake[0].y) {
         snake.unshift(nuevaPosicionCabeza);
-        snake.unshift(nuevaPosicionCabeza);        
+        snake.unshift(nuevaPosicionCabeza);
+        puntuacionActual.textContent = puntosActuales += 2;      
         manzanaDoradaActiva = false;
         clearTimeout(temporizadorManzanaDorada);
         temporizadorManzanaDorada = setTimeout(() => {
@@ -127,6 +131,31 @@ function moverSerpiente() {
         snake.unshift(nuevaPosicionCabeza);
         snake.pop();
         snake.pop();
+        if (snake.length === 0) {
+            let overlayBodyFondoOscuro = document.createElement("div");
+            overlayBodyFondoOscuro.classList.add("overlayBody");
+            document.body.appendChild(overlayBodyFondoOscuro);
+            let ContenedorMensajeDerrota = document.createElement("div");
+            let mensajeDerrota = document.createElement("p");
+            mensajeDerrota.textContent = " 🐍☠️¡Has perdido! La serpiente ha comido más de lo que debería... ☠️🐍" ;
+            ContenedorMensajeDerrota.appendChild(mensajeDerrota);
+            ContenedorMensajeDerrota.classList.add("modalGameOver");
+            document.body.appendChild(ContenedorMensajeDerrota);
+            let botonEmpezarJuego = document.createElement("button");
+            botonEmpezarJuego.classList.add("botonModalEmpezarJugar");
+            botonEmpezarJuego.textContent = "Volver a jugar";
+            ContenedorMensajeDerrota.appendChild(botonEmpezarJuego);
+            botonEmpezarJuego.addEventListener("click", function(){
+                ContenedorMensajeDerrota.classList.remove("modalGameOver");
+                ContenedorMensajeDerrota.classList.add("cerrarModal");
+                overlayBodyFondoOscuro.classList.remove("overlayBody");
+                setTimeout(() => {
+                window.location.reload();
+                }, 2000);
+            })
+            return;
+        }
+        puntuacionActual.textContent = puntosActuales -= 1;
         manzanaPodridaActiva = false;
         clearTimeout(temporizadorManzanaPodrida);
         temporizadorManzanaPodrida = setTimeout(() => {
