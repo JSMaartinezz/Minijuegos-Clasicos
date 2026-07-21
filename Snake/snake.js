@@ -4,6 +4,9 @@ let marcador = document.querySelector(".marcador");
 let contenedorPotenciador = document.querySelector(".contenedor-potenciador");
 let botonPotenciador = document.querySelector("#boton-potenciador");
 let contadorPotenciador = document.querySelector("#contador-potenciador");
+let potenciadorActivado = false;
+let duracionPotenciador = 10;
+let recargaPotenciador = 30;
 let puntuacionActual = document.querySelector("#puntuacion-actual");
 let puntosActuales = 0;
 let puntuacionMaxima = document.querySelector("#puntuacion-maxima");
@@ -113,6 +116,12 @@ function moverSerpiente() {
         x: snake[0].x + direccion.x,
         y: snake[0].y + direccion.y
     };
+    let chocaConSuCuerpo = snake.some(bloque => bloque.x === nuevaPosicionCabeza.x && bloque.y === nuevaPosicionCabeza.y);
+    if (nuevaPosicionCabeza.x < 0 || nuevaPosicionCabeza.x >= 25 || nuevaPosicionCabeza.y < 0 || 
+        nuevaPosicionCabeza.y >= 20 || chocaConSuCuerpo) {
+            modalGameOver();
+            return;
+    }
     if (manzanaRoja.x === snake[0].x && manzanaRoja.y === snake[0].y) {
         snake.unshift(nuevaPosicionCabeza);
         puntosActuales++;
@@ -132,28 +141,7 @@ function moverSerpiente() {
         snake.pop();
         snake.pop();
         if (snake.length === 0) {
-            let overlayBodyFondoOscuro = document.createElement("div");
-            overlayBodyFondoOscuro.classList.add("overlayBody");
-            document.body.appendChild(overlayBodyFondoOscuro);
-            let ContenedorMensajeDerrota = document.createElement("div");
-            let mensajeDerrota = document.createElement("p");
-            mensajeDerrota.textContent = " 🐍☠️¡Has perdido! La serpiente ha comido más de lo que debería... ☠️🐍" ;
-            ContenedorMensajeDerrota.appendChild(mensajeDerrota);
-            ContenedorMensajeDerrota.classList.add("modalGameOver");
-            document.body.appendChild(ContenedorMensajeDerrota);
-            let botonEmpezarJuego = document.createElement("button");
-            botonEmpezarJuego.classList.add("botonModalEmpezarJugar");
-            botonEmpezarJuego.textContent = "Volver a jugar";
-            ContenedorMensajeDerrota.appendChild(botonEmpezarJuego);
-            botonEmpezarJuego.addEventListener("click", function(){
-                ContenedorMensajeDerrota.classList.remove("modalGameOver");
-                ContenedorMensajeDerrota.classList.add("cerrarModal");
-                overlayBodyFondoOscuro.classList.remove("overlayBody");
-                setTimeout(() => {
-                window.location.reload();
-                }, 2000);
-            })
-            return;
+            modalGameOver();
         }
         puntuacionActual.textContent = puntosActuales -= 1;
         manzanaPodridaActiva = false;
@@ -166,8 +154,34 @@ function moverSerpiente() {
         snake.pop();
     }
 }
+// Funcion llamar al modal de derrota //
+function modalGameOver() {
+    clearInterval(intervaloMovimiento);
+    let overlayBodyFondoOscuro = document.createElement("div");
+    overlayBodyFondoOscuro.classList.add("overlayBody");
+    document.body.appendChild(overlayBodyFondoOscuro);
+    let ContenedorMensajeDerrota = document.createElement("div");
+    let mensajeDerrota = document.createElement("p");
+    mensajeDerrota.textContent = " 🐍☠️¡Has perdido! La serpiente ha comido más de lo que debería... ☠️🐍" ;
+    ContenedorMensajeDerrota.appendChild(mensajeDerrota);
+    ContenedorMensajeDerrota.classList.add("modalGameOver");
+    document.body.appendChild(ContenedorMensajeDerrota);
+    let botonEmpezarJuego = document.createElement("button");
+    botonEmpezarJuego.classList.add("botonModalEmpezarJugar");
+    botonEmpezarJuego.textContent = "Volver a jugar";
+    ContenedorMensajeDerrota.appendChild(botonEmpezarJuego);
+    botonEmpezarJuego.addEventListener("click", function(){
+        ContenedorMensajeDerrota.classList.remove("modalGameOver");
+        ContenedorMensajeDerrota.classList.add("cerrarModal");
+        overlayBodyFondoOscuro.classList.remove("overlayBody");
+        setTimeout(() => {
+        window.location.reload();
+        }, 2000);
+    })
+    return;
+}
 // Intervalo de tiempo para simular que se mueve la serpiente //
-setInterval(() => {
+let intervaloMovimiento = setInterval(() => {
     pincel.clearRect(0, 0, tablero.width, tablero.height);
     moverSerpiente();
     dibujarSerpiente();
@@ -180,16 +194,24 @@ setInterval(() => {
 window.addEventListener("keydown", (evento) => {
     switch (evento.key) {
         case "ArrowUp":
-            direccion = {x: 0, y: -1};
+            if (direccion.y !== 1) {
+                direccion = {x: 0, y: -1};
+            }
             break;
         case "ArrowDown":
-            direccion = {x: 0, y: 1};
+            if (direccion.y !== -1) {
+                direccion = {x: 0, y: 1};
+            }
             break;
         case "ArrowLeft":
-            direccion = {x: -1, y: 0};
+            if (direccion.x !== 1) {
+                direccion = {x: -1, y: 0};
+            }
             break;
         case "ArrowRight":
+        if (direccion.x !== -1) {
             direccion = {x: 1, y: 0};
+        }    
             break;        
     }
 })
