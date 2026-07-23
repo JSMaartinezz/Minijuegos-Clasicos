@@ -5,6 +5,7 @@ let contenedorPotenciador = document.querySelector(".contenedor-potenciador");
 let botonPotenciador = document.querySelector("#boton-potenciador");
 let contadorPotenciador = document.querySelector("#contador-potenciador");
 let potenciadorActivado = false;
+let serpientePuedeAtravesar = false;
 let duracionPotenciador = 10;
 let recargaPotenciador = 30;
 let puntuacionActual = document.querySelector("#puntuacion-actual");
@@ -118,7 +119,7 @@ function moverSerpiente() {
     };
     let chocaConSuCuerpo = snake.some(bloque => bloque.x === nuevaPosicionCabeza.x && bloque.y === nuevaPosicionCabeza.y);
     if (nuevaPosicionCabeza.x < 0 || nuevaPosicionCabeza.x >= 25 || nuevaPosicionCabeza.y < 0 || 
-        nuevaPosicionCabeza.y >= 20 || chocaConSuCuerpo) {
+        nuevaPosicionCabeza.y >= 20 || (chocaConSuCuerpo && !serpientePuedeAtravesar)) {
             modalGameOver();
             return;
     }
@@ -180,6 +181,34 @@ function modalGameOver() {
     })
     return;
 }
+// Funcion para activar potenciador //
+function activarPotenciador() {
+    let tiempoRestantePotenciador = duracionPotenciador;
+    let tiempoRecargaPotenciador = recargaPotenciador;
+    if (potenciadorActivado !== true) {
+    serpientePuedeAtravesar = true;
+    potenciadorActivado = true;
+    console.log("potenciador activado");
+    let intervaloTiempoRestantePotenciador = setInterval(() => {
+        tiempoRestantePotenciador--
+        contadorPotenciador.textContent = tiempoRestantePotenciador + " " + "segundos";
+        if (tiempoRestantePotenciador === 0) {
+            serpientePuedeAtravesar = false;
+            contadorPotenciador.textContent = tiempoRecargaPotenciador + " " + "segundos";
+            clearInterval(intervaloTiempoRestantePotenciador);
+            let intervaloRecargaPotenciador = setInterval(() => {
+            tiempoRecargaPotenciador--;
+            contadorPotenciador.textContent = tiempoRecargaPotenciador + " " + "segundos";
+            if (tiempoRecargaPotenciador === 0) {
+                contadorPotenciador.textContent = "🔥¡Listo!🔥";
+                clearInterval(intervaloRecargaPotenciador);
+                potenciadorActivado = false;
+            }
+    }, 1000);
+        }
+    }, 1000);
+    }
+}
 // Intervalo de tiempo para simular que se mueve la serpiente //
 let intervaloMovimiento = setInterval(() => {
     pincel.clearRect(0, 0, tablero.width, tablero.height);
@@ -212,6 +241,9 @@ window.addEventListener("keydown", (evento) => {
         if (direccion.x !== -1) {
             direccion = {x: 1, y: 0};
         }    
+            break;
+        case " ":
+            activarPotenciador();
             break;        
     }
 })
