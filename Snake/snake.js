@@ -11,6 +11,9 @@ let recargaPotenciador = 30;
 let puntuacionActual = document.querySelector("#puntuacion-actual");
 let puntosActuales = 0;
 let puntuacionMaxima = document.querySelector("#puntuacion-maxima");
+// localStorage para maxima puntuacion //
+let guardarpuntuacionMaxima = parseInt(localStorage.getItem("puntuacionMaxima") || 0);
+puntuacionMaxima.textContent = guardarpuntuacionMaxima; 
 let leyenda = document.querySelector(".leyenda");
 const tablero = document.querySelector(".tablero");
 const pincel = tablero.getContext("2d");
@@ -179,6 +182,11 @@ function modalGameOver() {
         window.location.reload();
         }, 2000);
     })
+    if (puntosActuales > guardarpuntuacionMaxima) {
+        guardarpuntuacionMaxima = puntosActuales;
+        localStorage.setItem("puntuacionMaxima", guardarpuntuacionMaxima);
+        puntuacionMaxima.textContent = guardarpuntuacionMaxima;
+    }
     return;
 }
 // Funcion para activar potenciador //
