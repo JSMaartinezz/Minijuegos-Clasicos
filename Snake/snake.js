@@ -107,12 +107,22 @@ function posicionManzanaPodrida () {
 }
 // Funciones para movimientos serpiente //
 function dibujarSerpiente () {
-    pincel.fillStyle = "#124D1C";
+    let gradianteColorSerpiente = pincel.createLinearGradient(
+    snake[0].x *tamanoCasilla + tamanoCasilla/2, snake[0].y * tamanoCasilla + tamanoCasilla/2,
+    snake[snake.length - 1].x * tamanoCasilla + tamanoCasilla/2, snake[snake.length - 1].y * tamanoCasilla + tamanoCasilla/2
+    );
+    gradianteColorSerpiente.addColorStop(0, "#124D1C");
+    gradianteColorSerpiente.addColorStop(1, "#348021");
+    pincel.strokeStyle = gradianteColorSerpiente;
+    pincel.lineWidth = tamanoCasilla -4;
+    pincel.lineCap = "round";
+    pincel.lineJoin = "round";
+    pincel.beginPath();
+    pincel.moveTo(snake[0].x *tamanoCasilla + tamanoCasilla/2, snake[0].y * tamanoCasilla + tamanoCasilla/2);
     snake.forEach(parteSerpiente => {
-        pincel.fillRect(parteSerpiente.x * tamanoCasilla, parteSerpiente.y * tamanoCasilla,
-            tamanoCasilla, tamanoCasilla
-        );
+        pincel.lineTo(parteSerpiente.x *tamanoCasilla + tamanoCasilla/2, parteSerpiente.y * tamanoCasilla + tamanoCasilla/2)
     });
+    pincel.stroke();
 }
 dibujarSerpiente();
 function moverSerpiente() {
