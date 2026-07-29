@@ -123,6 +123,48 @@ function dibujarSerpiente () {
         pincel.lineTo(parteSerpiente.x *tamanoCasilla + tamanoCasilla/2, parteSerpiente.y * tamanoCasilla + tamanoCasilla/2)
     });
     pincel.stroke();
+    pincel.fillStyle = "#ffffff";
+    pincel.beginPath();
+    pincel.arc(snake[0].x *tamanoCasilla + tamanoCasilla * 0.75, snake[0].y *tamanoCasilla + tamanoCasilla* 0.25, 5, 0, Math.PI *2);
+    pincel.fill();
+    pincel.beginPath();
+    pincel.arc(snake[0].x *tamanoCasilla + tamanoCasilla * 0.75, snake[0].y *tamanoCasilla + tamanoCasilla* 0.75, 5, 0, Math.PI *2);
+    pincel.fill();
+    pincel.fillStyle = "#000000";
+    pincel.beginPath();
+    pincel.arc(snake[0].x *tamanoCasilla + tamanoCasilla * 0.75, snake[0].y *tamanoCasilla + tamanoCasilla* 0.25, 3, 0, Math.PI *2);
+    pincel.fill();
+    pincel.beginPath();
+    pincel.arc(snake[0].x *tamanoCasilla + tamanoCasilla * 0.75, snake[0].y *tamanoCasilla + tamanoCasilla* 0.75, 3, 0, Math.PI *2);
+    pincel.fill();
+    let inicioX, inicioY, finX, finY;
+    if (direccion.x === 1) {
+        inicioX = snake[0].x * tamanoCasilla + tamanoCasilla;
+        inicioY = snake[0].y * tamanoCasilla + tamanoCasilla * 0.5;
+        finX = snake[0].x * tamanoCasilla + tamanoCasilla * 1.25;
+        finY = inicioY;
+    } else if(direccion.x === -1) {
+        inicioX = snake[0].x * tamanoCasilla;
+        inicioY = snake[0].y * tamanoCasilla + tamanoCasilla * 0.5;
+        finX = snake[0].x * tamanoCasilla - tamanoCasilla * 0.25;
+        finY = inicioY;
+    } else if(direccion.y === -1) {
+        inicioX = snake[0].x * tamanoCasilla + tamanoCasilla * 0.5;
+        inicioY = snake[0].y * tamanoCasilla;
+        finX = inicioX
+        finY = snake[0].y * tamanoCasilla - tamanoCasilla * 0.25;
+    } else {
+        inicioX = snake[0].x * tamanoCasilla + tamanoCasilla * 0.5
+        inicioY = snake[0].y * tamanoCasilla + tamanoCasilla;
+        finX = inicioX
+        finY = snake[0].y * tamanoCasilla + tamanoCasilla * 1.25; 
+    };
+    pincel.strokeStyle = "#ff0000";
+    pincel.lineWidth = 2;
+    pincel.beginPath();
+    pincel.moveTo(inicioX, inicioY);
+    pincel.lineTo(finX, finY);
+    pincel.stroke();
 }
 dibujarSerpiente();
 function moverSerpiente() {
