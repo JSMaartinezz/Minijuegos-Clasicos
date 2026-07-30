@@ -3,6 +3,7 @@
 let botonPPT = document.querySelector(".PPT");
 let botonAdivinaNumero = document.querySelector(".AdivinaNumero");
 let botonAhorcado = document.querySelector(".ahorcado");
+let botonSnake = document.querySelector(".snake");
 
 // Variables juego seleccionado //
 let juegoTarjeta = document.querySelector(".juegoTarjeta");
@@ -17,13 +18,15 @@ botonPPT.addEventListener("click", function() {
     if (juegoTarjeta.classList.contains("juegoTarjetaMostrar") === true) {
         botonTarjeta.classList.remove("hover-adivina");
         botonTarjeta.classList.remove("hover-ahorcado");
+        botonTarjeta.classList.remove("hover-snake");
         botonTarjeta.classList.add("hover-ppt");
         juegoTarjeta.classList.add("transicionVuelta");
         juegoTarjeta.addEventListener("animationend", function() {
             if (event.animationName === 'transicionVuelta') {
                 console.log("La animacion especifica ha terminado");
                 botonTarjeta.classList.remove("hover-adivina");
-                botonTarjeta.classList.remove("hover-ahorcado");                
+                botonTarjeta.classList.remove("hover-ahorcado");
+                botonTarjeta.classList.remove("hover-snake");                
                 botonTarjeta.classList.add("hover-ppt");
                 juegoTarjeta.classList.add("juegoTarjeta");
                 juegoTarjeta.classList.remove("transicionVuelta");
@@ -43,6 +46,7 @@ botonPPT.addEventListener("click", function() {
     } else {juegoTarjeta.classList.add("juegoTarjetaMostrar")
         botonTarjeta.classList.remove("hover-adivina");
         botonTarjeta.classList.remove("hover-ahorcado");
+        botonTarjeta.classList.remove("hover-snake");
         botonTarjeta.classList.add("hover-ppt");
         tituloTarjeta.textContent = "Piedra, Papel o Tijeras";
         imagenTarjeta.src = "imagenes/PPT-imagen.png";
@@ -66,6 +70,7 @@ botonAdivinaNumero.addEventListener("click", function() {
     if (juegoTarjeta.classList.contains("juegoTarjetaMostrar") === true) {
         botonTarjeta.classList.remove("hover-ppt");
         botonTarjeta.classList.remove("hover-ahorcado");
+        botonTarjeta.classList.remove("hover-snake");
         botonTarjeta.classList.add("hover-adivina");
         juegoTarjeta.classList.add("transicionVuelta");
         juegoTarjeta.addEventListener("animationend", function() {
@@ -73,6 +78,7 @@ botonAdivinaNumero.addEventListener("click", function() {
                 console.log("La animacion especifica ha terminado");
                 botonTarjeta.classList.remove("hover-ppt");
                 botonTarjeta.classList.remove("hover-ahorcado");
+                botonTarjeta.classList.remove("hover-snake");
                 botonTarjeta.classList.add("hover-adivina");
                 juegoTarjeta.classList.add("juegoTarjeta");
                 juegoTarjeta.classList.remove("transicionVuelta");
@@ -92,6 +98,7 @@ botonAdivinaNumero.addEventListener("click", function() {
     } else {juegoTarjeta.classList.add("juegoTarjetaMostrar")
         botonTarjeta.classList.remove("hover-ppt");
         botonTarjeta.classList.remove("hover-ahorcado");
+        botonTarjeta.classList.remove("hover-snake");
         botonTarjeta.classList.add("hover-adivina");
         tituloTarjeta.textContent = "Adivina el número";
         imagenTarjeta.src = "imagenes/adivina-numero.png";
@@ -105,6 +112,7 @@ botonAhorcado.addEventListener("click", function() {
     if (juegoTarjeta.classList.contains("juegoTarjetaMostrar") === true) {
         botonTarjeta.classList.remove("hover-ppt");
         botonTarjeta.classList.remove("hover-adivina");
+        botonTarjeta.classList.remove("hover-snake");
         botonTarjeta.classList.add("hover-ahorcado");
         juegoTarjeta.classList.add("transicionVuelta");
         juegoTarjeta.addEventListener("animationend", function() {
@@ -112,6 +120,7 @@ botonAhorcado.addEventListener("click", function() {
                 console.log("La animacion especifica ha terminado");
                 botonTarjeta.classList.remove("hover-ppt");
                 botonTarjeta.classList.remove("hover-adivina");
+                botonTarjeta.classList.remove("hover-snake");
                 botonTarjeta.classList.add("hover-ahorcado");
                 juegoTarjeta.classList.add("juegoTarjeta");
                 juegoTarjeta.classList.remove("transicionVuelta");
@@ -131,11 +140,54 @@ botonAhorcado.addEventListener("click", function() {
     } else {juegoTarjeta.classList.add("juegoTarjetaMostrar")
         botonTarjeta.classList.remove("hover-ppt");
         botonTarjeta.classList.remove("hover-adivina");
+        botonTarjeta.classList.remove("hover-snake");
         botonTarjeta.classList.add("hover-ahorcado");
         tituloTarjeta.textContent = "Ahorca-2";
         imagenTarjeta.src = "imagenes/ahorcado.png";
         descripcionTarjeta.textContent = "¿Serás capaz de adivinar la palabra secreta antes de acabar...💀 ¡Buena Suerte!";
         botonTarjeta.textContent = "Jugar YA";
         urlJuego = "Ahorca2/ahorca2.html";
+    };
+});
+// Evento click boton snake //
+botonSnake.addEventListener("click", function() {
+    if (juegoTarjeta.classList.contains("juegoTarjetaMostrar") === true) {
+        botonTarjeta.classList.remove("hover-ppt");
+        botonTarjeta.classList.remove("hover-adivina");
+        botonTarjeta.classList.remove("hover-ahorcado");
+        botonTarjeta.classList.add("hover-snake");
+        juegoTarjeta.classList.add("transicionVuelta");
+        juegoTarjeta.addEventListener("animationend", function() {
+            if (event.animationName === 'transicionVuelta') {
+                console.log("La animacion especifica ha terminado");
+                botonTarjeta.classList.remove("hover-ppt");
+                botonTarjeta.classList.remove("hover-adivina");
+                botonTarjeta.classList.remove("hover-ahorcado");
+                botonTarjeta.classList.add("hover-snake");
+                juegoTarjeta.classList.add("juegoTarjeta");
+                juegoTarjeta.classList.remove("transicionVuelta");
+                juegoTarjeta.classList.remove("juegoTarjetaMostrar");
+            };
+        });
+        setTimeout(function() {
+            juegoTarjeta.classList.remove("juegoTarjetaMostrar");
+            juegoTarjeta.classList.remove("transicionVuelta");
+            tituloTarjeta.textContent = "Snake";
+            imagenTarjeta.src = "imagenes/snake.png";
+            descripcionTarjeta.textContent = "Consigue que tu serpiente junto con su poder secreto sea lo más grande posible y compite con tu propio ¡RECORD!";
+            botonTarjeta.textContent = "Jugar YA";
+            juegoTarjeta.classList.add("juegoTarjetaMostrar");
+        }, 1500);
+        urlJuego = "Snake/snake.html";
+    } else {juegoTarjeta.classList.add("juegoTarjetaMostrar")
+        botonTarjeta.classList.remove("hover-ppt");
+        botonTarjeta.classList.remove("hover-adivina");
+        botonTarjeta.classList.remove("hover-ahorcado");
+        botonTarjeta.classList.add("hover-snake");
+        tituloTarjeta.textContent = "Snake";
+        imagenTarjeta.src = "imagenes/snake.png";
+        descripcionTarjeta.textContent = "Consigue que tu serpiente junto con su poder secreto sea lo más grande posible y compite con tu propio ¡RECORD!";
+        botonTarjeta.textContent = "Jugar YA";
+        urlJuego = "Snake/snake.html";
     };
 });

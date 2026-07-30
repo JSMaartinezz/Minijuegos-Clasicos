@@ -387,4 +387,12 @@ button {
 .ahorcado:hover {
     box-shadow: 2px 2px 1px 0.5px var(--color-fondo-tele);
 }
-
+.hover-snake {
+    background-color: var(--color-letra);
+}
+.snake:hover {
+    box-shadow: 2px 2px 1px 0.5px var(--color-fondo-tele);
+}
+.hover-snake:hover {
+    background: linear-gradient(to right, #28a33d, #478338);
+}
