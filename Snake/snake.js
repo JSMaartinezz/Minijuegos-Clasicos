@@ -5,6 +5,7 @@ let contenedorPotenciador = document.querySelector(".contenedor-potenciador");
 let botonPotenciador = document.querySelector("#boton-potenciador");
 let contadorPotenciador = document.querySelector("#contador-potenciador");
 let potenciadorActivado = false;
+let potenciadorEnRecarga = false;
 let serpientePuedeAtravesar = false;
 let duracionPotenciador = 10;
 let recargaPotenciador = 30;
@@ -38,25 +39,53 @@ posicionManzanaDorada();
 // Funcion pintar manzanas //
 function dibujarManzana () {
     pincel.fillStyle = "#C62828";
-    pincel.fillRect(manzanaRoja.x * tamanoCasilla, manzanaRoja.y * tamanoCasilla,
-        tamanoCasilla, tamanoCasilla
-    );
+    pincel.beginPath();
+    let centroX = (manzanaRoja.x * tamanoCasilla + tamanoCasilla / 2);
+    let centroY = (manzanaRoja.y * tamanoCasilla + tamanoCasilla / 2);
+    pincel.arc(centroX - 6, centroY - 2, 14, Math.PI * 1.8, Math.PI * 0.2,true);
+    pincel.arc(centroX + 6, centroY - 2, 14, Math.PI * 0.8, Math.PI * 1.2,true);
+    pincel.fill();
+    pincel.beginPath();
+    pincel.strokeStyle = "#3b2000"; 
+    pincel.lineWidth = 2;         
+    pincel.moveTo(centroX, centroY - 8);
+    pincel.quadraticCurveTo(centroX + 2, centroY - 14, centroX + 5, centroY - 18);
+    pincel.stroke(); 
+
 }
 function dibujarManzanaDorada () {
     if (manzanaDoradaActiva === true) {
     pincel.fillStyle = "#E4B028";
-    pincel.fillRect(manzanaDorada.x * tamanoCasilla, manzanaDorada.y * tamanoCasilla,
-        tamanoCasilla, tamanoCasilla
-    );
-    } else {};
+    pincel.beginPath();
+    let centroX = (manzanaDorada.x * tamanoCasilla + tamanoCasilla / 2);
+    let centroY = (manzanaDorada.y * tamanoCasilla + tamanoCasilla / 2);
+    pincel.arc(centroX - 6, centroY - 2, 14, Math.PI * 1.8, Math.PI * 0.2,true);
+    pincel.arc(centroX + 6, centroY - 2, 14, Math.PI * 0.8, Math.PI * 1.2,true);
+    pincel.fill();
+    pincel.beginPath();
+    pincel.strokeStyle = "#3b2000"; 
+    pincel.lineWidth = 2;         
+    pincel.moveTo(centroX, centroY - 8);
+    pincel.quadraticCurveTo(centroX + 2, centroY - 14, centroX + 5, centroY - 18);
+    pincel.stroke();
+    };
 }
 function dibujarManzanaPodrida() {
     if (manzanaPodridaActiva === true) {
-        pincel.fillStyle = "#656D3F";
-        pincel.fillRect(manzanaPodrida.x * tamanoCasilla, manzanaPodrida.y * tamanoCasilla,
-            tamanoCasilla, tamanoCasilla
-        );
-    } else {};
+    pincel.fillStyle = "#656D3F";
+    pincel.beginPath();
+    let centroX = (manzanaPodrida.x * tamanoCasilla + tamanoCasilla / 2);
+    let centroY = (manzanaPodrida.y * tamanoCasilla + tamanoCasilla / 2);
+    pincel.arc(centroX - 6, centroY - 2, 14, Math.PI * 1.8, Math.PI * 0.2,true);
+    pincel.arc(centroX + 6, centroY - 2, 14, Math.PI * 0.8, Math.PI * 1.2,true);
+    pincel.fill();
+    pincel.beginPath();
+    pincel.strokeStyle = "#3b2000"; 
+    pincel.lineWidth = 2;         
+    pincel.moveTo(centroX, centroY - 8);
+    pincel.quadraticCurveTo(centroX + 2, centroY - 14, centroX + 5, centroY - 18);
+    pincel.stroke();
+    };
 }
 // Funcion posicion aleatoria manzana //
 function posicionManzana () {
@@ -107,6 +136,9 @@ function posicionManzanaPodrida () {
 }
 // Funciones para movimientos serpiente //
 function dibujarSerpiente () {
+    if (potenciadorActivado === true) {
+        pincel.globalAlpha = 0.5;
+    } else {pincel.globalAlpha = 1};
     let gradianteColorSerpiente = pincel.createLinearGradient(
     snake[0].x *tamanoCasilla + tamanoCasilla/2, snake[0].y * tamanoCasilla + tamanoCasilla/2,
     snake[snake.length - 1].x * tamanoCasilla + tamanoCasilla/2, snake[snake.length - 1].y * tamanoCasilla + tamanoCasilla/2
@@ -165,6 +197,7 @@ function dibujarSerpiente () {
     pincel.moveTo(inicioX, inicioY);
     pincel.lineTo(finX, finY);
     pincel.stroke();
+    pincel.globalAlpha = 1;
 }
 dibujarSerpiente();
 function moverSerpiente() {
@@ -245,14 +278,17 @@ function modalGameOver() {
 function activarPotenciador() {
     let tiempoRestantePotenciador = duracionPotenciador;
     let tiempoRecargaPotenciador = recargaPotenciador;
-    if (potenciadorActivado !== true) {
+    if (potenciadorActivado !== true && potenciadorEnRecarga === false) {
     serpientePuedeAtravesar = true;
     potenciadorActivado = true;
+    potenciadorEnRecarga = false;
     console.log("potenciador activado");
     let intervaloTiempoRestantePotenciador = setInterval(() => {
         tiempoRestantePotenciador--
         contadorPotenciador.textContent = tiempoRestantePotenciador + " " + "segundos";
         if (tiempoRestantePotenciador === 0) {
+            potenciadorActivado = false;
+            potenciadorEnRecarga = true;
             serpientePuedeAtravesar = false;
             contadorPotenciador.textContent = tiempoRecargaPotenciador + " " + "segundos";
             clearInterval(intervaloTiempoRestantePotenciador);
@@ -262,7 +298,7 @@ function activarPotenciador() {
             if (tiempoRecargaPotenciador === 0) {
                 contadorPotenciador.textContent = "🔥¡Listo!🔥";
                 clearInterval(intervaloRecargaPotenciador);
-                potenciadorActivado = false;
+                potenciadorEnRecarga = false;
             }
     }, 1000);
         }
