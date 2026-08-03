@@ -396,3 +396,11 @@ button {
 .hover-snake:hover {
     background: linear-gradient(to right, #28a33d, #478338);
 }
+
+/* Responsividad */ 
+@media (max-width: 1400px) {
+    .padre {
+        transform: scale(0.8);
+        transform-origin: top center;
+    }
+}
