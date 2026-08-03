@@ -317,16 +317,6 @@ button {
     font-size: 20px;
     animation: transicionVuelta 2s;
 }
-.transicionIntroducirTarjeta {
-    display: block;
-    color: var(--color-letra);
-    border: 10px solid var(--color-fondo-tele);
-    border-radius: 4px;
-    background-color: var(--color-madera-tele);
-    margin: 24px;
-    font-size: 20px;
-    animation: transicionSalidaTarjeta 4s;
-}
 /* Transiciones */
 @keyframes transicionTarjeta {
     from {transform: translateX(100vw);}
@@ -336,11 +326,6 @@ button {
     from {transform: translateX(0vw);}
     to {transform: translateX(100vw);}
 }
-@keyframes transicionSalidaTarjeta {
-    from {transform: translateY(0vw);}
-    to {transform: translateY(100vw);}
-}
-
 .tituloTarjeta {
     display: flex;
     justify-content: center;
